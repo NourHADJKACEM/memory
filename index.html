@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        const images=["img1.jpg","img2.jpg","imgg.png","img2.jpg","imgg.png","img1.jpg"];
+        function reverse(){
+            let x=event.target.id;
+            
+
+          document.getElementById(x).src= images[x];
+          
+        }
+    </script>
+</head>
+<body>
+
+<h1><center>Memory Game</center></h1>
+
+<table style="width: 100%;">
+  <tr>
+    <td><img  id="0" src="arr.png" alt="img1" width="35%" height="50%" onclick="reverse()"></td>
+    <td><img id="1" src="arr.png" alt="img2" width="35%" height="50%" onclick="reverse()"></td>
+    <td><img id="2" src="arr.png" alt="img3" width="35%" height="50%" onclick="reverse()"></td>
+  </tr>
+  <tr>
+    <td><img  id="3" src="arr.png" alt="img2" width="35%" height="50%" onclick="reverse()"></td>
+    <td><img  id="4" src="arr.png" alt="img3" width="35%" height="50%" onclick="reverse()"></td>
+    <td><img id="5"  src="arr.png" alt="img1" width="35%" height="50%" onclick="reverse()"></td>
+  </tr>
+
+  </table>
+
+</body>
+</html>
+
+
