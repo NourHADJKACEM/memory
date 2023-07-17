@@ -2,14 +2,61 @@
 <html>
 <head>
     <script>
-        const images=["img1.jpg","img2.jpg","imgg.png","img2.jpg","imgg.png","img1.jpg"];
+        const ref_img=["img1.jpg","img2.jpg","imgg.png"];
+        const images=[];
+        const nbtir=[0,0,0];
+        let score1=0;
+        let score2=0;
+        let tour="j1";
+        let numtir=0;
+        let first_tir=0;
+        let second_tir=0;
+        function init(){
+          let r=-1;
+          for (let i=0; i<6;i++){
+            do{
+              r=Math.floor(Math.random() * 3);
+            }while (nbtir[r]>=2);
+            nbtir[r]++;
+            images[i]=ref_img[r];
+          }
+          console.log("images="+images);
+        }
         function reverse(){
             let x=event.target.id;
-            
+            document.getElementById(x).src= images[x];
+            numtir++;
+            if (numtir==1)
+              first_tir=x;
+            else{
+              second_tir=x;
+              if (images[first_tir]!=images[second_tir]){
+                setTimeout(rebelote, 700); 
+              }
+              else {
+                if (tour=="j1"){
+                  score1++;
+                  document.getElementById("s1").innerHTML="score1="+score1;
+                }
+                else {
+                  score2++;
+                  document.getElementById("s2").innerHTML="score2="+score2;
+                }
+              }
 
-          document.getElementById(x).src= images[x];
-          
+              numtir=0;
+            }      
         }
+        function rebelote(){
+          document.getElementById(second_tir).src= "arr.png";
+          document.getElementById(first_tir).src= "arr.png";
+          if (tour=="j1")
+            tour="j2";
+          else
+            tour="j1";
+          document.getElementById("tour").innerHTML="tour="+tour;
+        }
+      init();
     </script>
 </head>
 <body>
@@ -30,6 +77,9 @@
 
   </table>
 
+  <p id="tour">tour=j1</p>
+  <p id="s1"></p>
+  <p id="s2"></p>
 </body>
 </html>
 
